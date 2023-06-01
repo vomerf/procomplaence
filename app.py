@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = os.path.join(BASE_DIR, 'csv_files')
 
 
-@app.route('/data/files')
+@app.route('/api/data/files', methods=['GET'])
 def get_data_files():
     files = os.listdir(DATA_DIR)
     file_info = []
@@ -23,7 +23,7 @@ def get_data_files():
     return jsonify(file_info)
 
 
-@app.route('/data/<name_file>')
+@app.route('/api/data/<name_file>', methods=['GET'])
 def get_data(name_file):
     print(name_file)
     file = name_file + '.csv'
